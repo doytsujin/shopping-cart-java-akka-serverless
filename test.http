@@ -1,0 +1,42 @@
+GET https://autumn-sky-4029.us-east1.akkaserverless.app/carts/cart-1
+Content-Type: application/json
+
+{
+  "cart_id": "cart-1"
+}
+
+###
+
+POST https://autumn-sky-4029.us-east1.akkaserverless.app/cart/cart-1/items/add
+Content-Type: application/json
+
+{
+  "cart_id": "cart-1",
+  "product_id": "product-3",
+  "name": "product name 3",
+  "quantity": 1
+}
+
+###
+
+PUT https://autumn-sky-4029.us-east1.akkaserverless.app/cart/cart-1/items/product-2/change
+Content-Type: application/json
+
+{
+  "cart_id": "cart-1",
+  "product_id": "product-2",
+  "quantity": 22
+}
+
+###
+curl -XGET -d '{
+  "cart_id": "cart-1"
+}' https://autumn-sky-4029.us-east1.akkaserverless.app/carts/cart-1 -H "Content-Type: application/json"
+
+###
+
+curl -XPUT -d '{
+  "cart_id": "cart-1",
+  "product_id": "product-2",
+  "quantity": 22
+}' https://autumn-sky-4029.us-east1.akkaserverless.app/cart/cart-1/items/product-2/change -H "Content-Type: application/json"

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package cartese.domain;
+
+import "akkaserverless/annotations.proto";
+
+option (akkaserverless.file).event_sourced_entity = {
+  name: "ShoppingCartEse"
+  entity_type: "cart_ese"
+  state: "Cart"
+  events: "ItemAdded"
+  events: "ItemChangedQuantity"
+  events: "ItemRemoved"
+  events: "CheckedOut"
+  events: "CartRemoved"
+};
+
+message ItemAdded {
+  LineItem item = 1;
+}
+
+message ItemChangedQuantity {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+message ItemRemoved {
+  string productId = 1;
+}
+
+message CheckedOut {
+  bool checked_out = 2;
+}
+
+message CartRemoved {
+  bool deleted = 1;
+}
+
+message Cart {
+  string cart_id = 1;
+  bool checked_out = 2;
+  bool deleted = 3;
+  repeated LineItem items = 4;
+}
+
+message LineItem {
+  string productId = 1;
+  string name = 2;
+  int32 quantity = 3;
+}
