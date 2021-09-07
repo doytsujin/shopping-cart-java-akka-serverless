@@ -1,3 +1,5 @@
+.classpath
+.settings
 .vscode
 
 # Java - from https://raw.githubusercontent.com/github/gitignore/master/Java.gitignore
